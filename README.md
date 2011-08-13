@@ -27,7 +27,7 @@ HOW TO USE IT
 
 WATCH IN ACTION
 --------------
-The TiMultiTouch module is used in the Zampoña iOS application. The application resembles a peruvian panflute and
+The TiMultiTouch module is used in the ZampoÃ±a iOS application. The application resembles a peruvian panflute and
 uses the TiMultiTouch to enable playing two or more notes simultaneously. You can get it for free from [Zampona on iTunes]
 
 CODE EXAMPLE
