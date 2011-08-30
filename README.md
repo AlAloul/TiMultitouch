@@ -25,6 +25,11 @@ HOW TO USE IT
 	This field is a dictionary with information about the active touches: the key is the id of the touch, 
 	and the value is an object with the following properties: 'x', 'y' and 'globalPoint'.
 
+WATCH IN ACTION
+--------------
+The TiMultiTouch module is used in the Zampoña iOS application. The application resembles a peruvian panflute and
+uses the TiMultiTouch to enable playing two or more notes simultaneously. You can get it for free from [Zampona on iTunes].
+
 CODE EXAMPLE
 --------------
 
@@ -64,3 +69,5 @@ COPYRIGHT
 * 2011 Uri Shaked ([urish](https://github.com/urish))
 * 2011 Jose Fernandez (magec) github.com/magec (small change and tested in 1.6.2)
 * 2010 Yuchiro MASUI (masuidrive) <masui@masuidrive.jp>
+
+  [Zampona on iTunes]: http://itunes.apple.com/us/app/zampona/id448009267?mt=8
