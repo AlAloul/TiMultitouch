@@ -9,7 +9,7 @@ This module for Titanium Mobile 1.7.2
 INSTALL
 --------------
 
-	./build.py && rm -Rf /Library/Application\ Support/Titanium/modules/iphone/multitouch/ && unzip multitouch-iphone-0.1.zip -d /Library/Application\ Support/Titanium/
+	./build.py && rm -Rf /Library/Application\ Support/Titanium/modules/iphone/multitouch/ && unzip multitouch-iphone-1.0.zip -d /Library/Application\ Support/Titanium/
 
 If you have another Titanium Mobile SDK version, please change the value of the "TITANIUM_SDK_VERSION" property in titanium.xcconfig to match your desired version.
 
