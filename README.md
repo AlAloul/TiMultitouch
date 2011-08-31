@@ -41,19 +41,19 @@ CODE EXAMPLE
 	});
 	
 	win.addEventListener("touchstart", function(event) {
-		Ti.API.info("Touches started, points: " + event.points);
+		Ti.API.info("Touches started, points: " + JSON.stringify(event.points));
 	});
 
 	win.addEventListener("touchmove", function(event) {
-		Ti.API.info("Touches moved, points: " + event.points);
+		Ti.API.info("Touches moved, points: " + JSON.stringify(event.points));
 	});
 	
 	win.addEventListener("touchend", function(event) {
-		Ti.API.info("Touches ended, points: " + event.points);
+		Ti.API.info("Touches ended, points: " + JSON.stringify(event.points));
 	});
 	
 	win.addEventListener("touchcanceled", function(event) {
-		Ti.API.info("Touches canceled, points: " + event.points);
+		Ti.API.info("Touches canceled, points: " + JSON.stringify(event.points));
 	});
 
 For more info, Please check [app.js](https://github.com/urish/TiMultitouch/blob/master/example/app.js)
