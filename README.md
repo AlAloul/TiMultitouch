@@ -49,6 +49,16 @@ CODE EXAMPLE
 	
 	win.addEventListener("touchstart", function(event) {
 		Ti.API.info("Touches started, points: " + JSON.stringify(event.points));
+		
+		// Sample code for interating the points:
+		for (var pointName in event.points) {
+			Ti.API.info("Point " + pointName + " x=" + event.points[pointName].x
+				+ ", y=" + event.points[pointName].y);
+		}
+		
+		// You can use the above for the other events as well (touchmove, 
+		// touchend, touchcancel). Note that event.points is not an array, 
+		// so you should iterate it like the example above, and not as an array.
 	});
 
 	win.addEventListener("touchmove", function(event) {
