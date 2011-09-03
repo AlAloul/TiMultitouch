@@ -13,6 +13,13 @@ INSTALL
 
 If you have another Titanium Mobile SDK version, please change the value of the "TITANIUM_SDK_VERSION" property in titanium.xcconfig to match your desired version.
 
+PRECOMPILED VERSION
+--------------
+If you would rather not compile the module yourself, you can simply download a precompiled version.
+Precompiled versions are available here:
+
+[Precompiled version of the TiMultitouch module](https://github.com/urish/TiMultitouch/blob/master/dist)
+
 HOW TO USE IT
 -------------
 1. Add the multitouch module to your tiapp.xml: inside the `<modules>` tag add the following line:
