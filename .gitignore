@@ -1,7 +1,7 @@
 tmp
 bin
 build
-*.zip
+/*.zip
 .DS_Store
 example/.DS_Store
 multitouch_module.xcodeproj/project.xcworkspace
