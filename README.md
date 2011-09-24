@@ -79,7 +79,7 @@ CODE EXAMPLE
 		Ti.API.info("Touches canceled, points: " + JSON.stringify(event.points));
 	});
 
-For more info, Please check [app.js](https://github.com/urish/TiMultitouch/blob/master/example/app.js)
+For more info, please check [app.js](https://github.com/urish/TiMultitouch/blob/master/example/app.js)
 
 
 LICENSE
