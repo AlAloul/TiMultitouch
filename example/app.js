@@ -1,5 +1,6 @@
 // Copyright (c) 2011, Uri Shaked.
 // Based on code originally written by masuidrive.
+// Sample photo copyright (C) Peter Heilmann, under CC-BY 2.0 license
 
 Ti.UI.setBackgroundColor('#000');
 
