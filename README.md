@@ -11,11 +11,11 @@ INSTALL
 
 If your Titanium SDK is installed in /Library/Application Support/Titanium:
 
-	./build.py && rm -Rf /Library/Application\ Support/Titanium/modules/iphone/multitouch/ && unzip multitouch-iphone-1.0.zip -d /Library/Application\ Support/Titanium/
+	./build.py && rm -Rf /Library/Application\ Support/Titanium/modules/iphone/org.urish.titanium.multitouch/ && unzip org.urish.titanium.multitouch-iphone-1.0.zip -d /Library/Application\ Support/Titanium/
 
 If your Titanium SDK is installed under your home directory:
 
-	./build.py && rm -Rf ~/Library/Application\ Support/Titanium/modules/iphone/multitouch/ && unzip multitouch-iphone-1.0.zip -d ~/Library/Application\ Support/Titanium/
+	./build.py && rm -Rf ~/Library/Application\ Support/Titanium/modules/iphone/org.urish.titanium.multitouch/ && unzip org.urish.titanium.multitouch-iphone-1.0.zip -d ~/Library/Application\ Support/Titanium/
 
 If you have another Titanium Mobile SDK version, please change the value of the "TITANIUM_SDK_VERSION" property in titanium.xcconfig to match your installed version.
 
@@ -29,9 +29,9 @@ Precompiled versions are available here:
 HOW TO USE IT
 -------------
 1. Add the multitouch module to your tiapp.xml: inside the `<modules>` tag add the following line:
-	`<module version="1.0">multitouch</module>`
+	`<module version="1.0">org.urish.titanium.multitouch</module>`
 2. Add the following code in the beginning of your app.js:
-	`require("multitouch");`
+	`require("org.urish.titanium.multitouch");`
 3. To enable multitouch for a window or a view, add an empty event listener to the 'singletap' event 
 	(see example below).
 4. Now your touchstart/touchmove/touchend/touchcancel events will contain a new field: "points". 
@@ -46,7 +46,7 @@ uses the TiMultiTouch to enable playing two or more notes simultaneously. You ca
 CODE EXAMPLE
 --------------
 
-	require("multitouch");
+	require("org.urish.titanium.multitouch");
 	
 	win.addEventListener('singletap', function(event) {
 		// DON'T REMOVE THIS LISTENER!!
