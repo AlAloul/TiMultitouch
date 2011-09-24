@@ -2,14 +2,14 @@
 
 ## Description
 
-Handle multi touch event on your iOS applications.
+Handle multi touch events inside your iOS applications.
 
 ## Accessing the multitouch Module
 
 First of all, add the multitouch module to your applications tiapp.xml by adding the following
 line inside the `<modules>` tag:
 
-	`<module version="1.0">org.urish.titanium.multitouch</module>`
+	<module version="1.0">org.urish.titanium.multitouch</module>
 
 To load the module, add the following line to your javascript code:
 
@@ -65,7 +65,7 @@ For an extended example, please check the provided app.js (under the example dir
 
 ## Watch in action
 
-The TiMultiTouch module is used in the Zampoña iOS application. The application resembles a peruvian panflute and
+The TiMultiTouch module is used in the Zampona iOS application. The application resembles a peruvian panflute and
 uses the TiMultiTouch to enable playing two or more notes simultaneously. You can get it for free from [Zampona on iTunes](http://itunes.apple.com/us/app/zampona/id448009267?mt=8).
 
 
