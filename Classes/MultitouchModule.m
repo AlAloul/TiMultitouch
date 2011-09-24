@@ -3,7 +3,8 @@
 //  TiMultitouch
 //
 //  Created by masuidrive on 10/08/05.
-//  Copyright 2010 Big Canvas Inc. All rights reserved.
+//  Copyright (c) 2011, Uri Shaked.
+//  Original version Copyright 2010 Big Canvas Inc. All rights reserved.
 //
 
 #import "MultitouchModule.h"
@@ -14,6 +15,20 @@
 
 
 @implementation MultitouchModule
+
+#pragma mark Internal
+
+// this is generated for your module, please do not change it
+-(id)moduleGUID
+{
+	return @"3cfea9ea-13ff-4d13-ac12-8543fec2f132";
+}
+
+// this is generated for your module, please do not change it
+-(NSString*)moduleId
+{
+	return @"multitouch";
+}
 
 #pragma mark Lifecycle
 

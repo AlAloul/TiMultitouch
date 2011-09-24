@@ -3,7 +3,8 @@
 //  TiMultitouch
 //
 //  Created by masuidrive on 10/08/05.
-//  Copyright 2010 Big Canvas Inc. All rights reserved.
+//  Copyright (c) 2011, Uri Shaked.
+//  Original version Copyright 2010 Big Canvas Inc. All rights reserved.
 //
 
 #import "TiModule.h"
