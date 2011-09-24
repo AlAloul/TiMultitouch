@@ -1,16 +1,16 @@
-# multitouch_module Module
+# multitouch Module
 
 ## Description
 
 TODO: Enter your module description here
 
-## Accessing the multitouch_module Module
+## Accessing the multitouch Module
 
 To access this module from JavaScript, you would do the following:
 
-	var multitouch_module = require("multitouch");
+	var multitouch = require("multitouch");
 
-The multitouch_module variable is a reference to the Module object.	
+The multitouch variable is a reference to the Module object.	
 
 ## Reference
 

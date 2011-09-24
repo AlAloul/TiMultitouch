@@ -1,20 +1,19 @@
 //
-//  MultitouchModule.m
+//  OrgUrishTitaniumMultitouchModule.m
 //  TiMultitouch
 //
-//  Created by masuidrive on 10/08/05.
 //  Copyright (c) 2011, Uri Shaked.
 //  Original version Copyright 2010 Big Canvas Inc. All rights reserved.
 //
 
-#import "MultitouchModule.h"
+#import "OrgUrishTitaniumMultitouchModule.h"
 
 #define DOUBLE_TAP_DELAY		0.35
 #define HORIZ_SWIPE_DRAG_MIN	12
 #define VERT_SWIPE_DRAG_MAX		4
 
 
-@implementation MultitouchModule
+@implementation OrgUrishTitaniumMultitouchModule
 
 #pragma mark Internal
 
@@ -27,7 +26,7 @@
 // this is generated for your module, please do not change it
 -(NSString*)moduleId
 {
-	return @"multitouch";
+	return @"org.urish.titanium.multitouch";
 }
 
 #pragma mark Lifecycle

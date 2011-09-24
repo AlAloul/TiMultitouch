@@ -1,6 +1,6 @@
 // this sets the background color of the master UIView (when there are no windows/tab groups on it)
 Ti.UI.setBackgroundColor('#000');
-require("multitouch");
+require("org.urish.titanium.multitouch");
 
 var window = Ti.UI.createWindow({  
     backgroundColor:'#fff',

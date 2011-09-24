@@ -1,11 +1,11 @@
 /**
  * This is a generated file. Do not edit or your changes will be lost
  */
-#import "MultitouchModuleAssets.h"
+#import "OrgUrishTitaniumMultitouchModuleAssets.h"
 
 extern NSData * dataWithHexString (NSString * hexString);
 
-@implementation MultitouchModuleAssets
+@implementation OrgUrishTitaniumMultitouchModuleAssets
 
 - (NSData*) moduleAsset
 {
