@@ -12,6 +12,6 @@ platform: iphone
 # these should not be edited
 name: multitouch
 moduleid: org.urish.titanium.multitouch
-guid: 3cfea9ea-13ff-4d13-ac12-8543fec2f132
+guid: 3cfea9ea-13fe-4d13-ac12-8543fec2f132
 platform: iphone
 minsdk: 1.6.2
