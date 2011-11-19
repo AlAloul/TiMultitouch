@@ -3,7 +3,8 @@ Precompiled versions of TiMultitouch
 
 In this directory you will find precompiled versions of the TiMultitouch module. The versions are organized in 
 subdirectories, one subdirectory for each mobile Titanium SDK version. For example, the directory for Titanium Mobile
-1.7.2 is titanium-1.7.2.
+1.7.2 is titanium-1.7.2. The current version requires a license for the module from the [Appcelerator Marketplace]
+(https://marketplace.appcelerator.com/apps/860). If you don't like this, you can simply compile your own version.
 
 License
 -------
