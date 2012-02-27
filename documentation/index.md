@@ -9,7 +9,7 @@ Handle multi touch events inside your iOS applications.
 First of all, add the multitouch module to your applications tiapp.xml by adding the following
 line inside the `<modules>` tag:
 
-	<module version="1.0">org.urish.titanium.multitouch</module>
+	<module version="1.1">org.urish.titanium.multitouch</module>
 
 To load the module, add the following line to your javascript code:
 
