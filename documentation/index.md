@@ -71,7 +71,7 @@ uses the TiMultiTouch to enable playing two or more notes simultaneously. You ca
 
 ## Author
 
-Copyright (C) 2011, Uri Shaked <uri@salsa4fun.co.il>.
+Copyright (C) 2011, 2012 Uri Shaked <uri@salsa4fun.co.il>.
 Portions of the code are based on the original TiMultitouch module by masuidrive.
 
 Homepage: [Uri Shaked](https://www.urish.org/).
