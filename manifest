@@ -2,11 +2,11 @@
 # this is your module manifest and used by Titanium
 # during compilation, packaging, distribution, etc.
 #
-version: 1.0
+version: 1.1
 description: Adds multitouch to titanium mobile
 author: Uri Shaked
 license: MIT
-copyright: Copyright (c) 2011, Uri Shaked 
+copyright: Copyright (c) 2011, 2012 Uri Shaked 
 platform: iphone
 
 # these should not be edited
@@ -14,4 +14,4 @@ name: multitouch
 moduleid: org.urish.titanium.multitouch
 guid: 3cfea9ea-13fe-4d13-ac12-8543fec2f132
 platform: iphone
-minsdk: 1.6.2
+minsdk: 1.8.1
