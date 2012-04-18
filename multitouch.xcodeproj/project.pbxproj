@@ -225,6 +225,7 @@
 				GCC_PREFIX_HEADER = OrgUrishTitaniumMultitouch_Prefix.pch;
 				INSTALL_PATH = /usr/local/lib;
 				PRODUCT_NAME = OrgUrishTitaniumMultitouch;
+				SDKROOT = iphoneos;
 			};
 			name = Debug;
 		};
@@ -243,6 +244,7 @@
 				GCC_PREFIX_HEADER = OrgUrishTitaniumMultitouch_Prefix.pch;
 				INSTALL_PATH = /usr/local/lib;
 				PRODUCT_NAME = OrgUrishTitaniumMultitouch;
+				SDKROOT = iphoneos;
 			};
 			name = Release;
 		};
