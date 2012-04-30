@@ -181,7 +181,7 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
-			shellScript = "# shell script goes here\n\npython \"${TITANIUM_SDK}/titanium.py\" run --dir=\"${PROJECT_DIR}\"\nexit $?\n";
+			shellScript = "# shell script goes here\n\npython \"${TITANIUM_SDK}/titanium.py\" run --dir=\"${PROJECT_DIR}\" >> ${PROJECT_DIR}/console.log\nexit $?\n";
 		};
 /* End PBXShellScriptBuildPhase section */
 
@@ -285,6 +285,7 @@
 				GCC_DYNAMIC_NO_PIC = NO;
 				GCC_OPTIMIZATION_LEVEL = 0;
 				PRODUCT_NAME = "Build & test";
+				ZERO_LINK = iphoneos5.1;
 			};
 			name = Debug;
 		};
@@ -296,7 +297,7 @@
 				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
 				GCC_ENABLE_FIX_AND_CONTINUE = NO;
 				PRODUCT_NAME = "Build & test";
-				ZERO_LINK = NO;
+				ZERO_LINK = iphoneos5.1;
 			};
 			name = Release;
 		};

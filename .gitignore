@@ -4,5 +4,6 @@ build
 /*.zip
 .DS_Store
 example/.DS_Store
-multitouch_module.xcodeproj/project.xcworkspace
-multitouch_module.xcodeproj/xcuserdata
+multitouch.xcodeproj/xcuserdata
+console.log
+multitouch.xcodeproj/project.xcworkspace
