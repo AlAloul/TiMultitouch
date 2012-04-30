@@ -9,7 +9,7 @@ Handle multi touch events inside your iOS applications.
 First of all, add the multitouch module to your applications tiapp.xml by adding the following
 line inside the `<modules>` tag:
 
-	<module version="1.1">org.urish.titanium.multitouch</module>
+	<module version="1.2">org.urish.titanium.multitouch</module>
 
 To load the module, add the following line to your javascript code:
 
@@ -17,11 +17,11 @@ To load the module, add the following line to your javascript code:
 
 ## Reference
 
-You can enable multitouch for any window or view. First of all, add an empty event listener to the 'singletap' event 
+You can enable multitouch for any window or view. First of all, set the 'multitouch' property to the view to true
 (see example below). Then add listeners to the standard touchstart/touchmove/touchend/touchcancel events. These events
-will now contain a new field called "points".
+will include a new property named "points".
 
-The "points" fields is actually a dictionary with information about the touches. Each touch has a unique id which can be used to track the specific touch across several touch events. The dictionary contains the touch id as the key of the entry, and an object contains 'x' and 'y' properties as the value.
+The new "points" property is actually a dictionary with information about the touches. Each touch has a unique id which can be used to track the specific touch across several touch events. The dictionary contains the touch id as the key of the entry, and an object contains 'x' and 'y' properties as the value.
 
 The 'x' and 'y' properties for each touch are relative to the view. You can also get the global coordinates of the
 touch event by looking into the 'globalPoint' property.
@@ -30,10 +30,7 @@ touch event by looking into the 'globalPoint' property.
 
 	require("org.urish.titanium.multitouch");
 	
-	win.addEventListener('singletap', function(event) {
-		// DON'T REMOVE THIS LISTENER!!
-		// hack for multi touch module
-	});
+	win.multitouch=true;
 	
 	win.addEventListener("touchstart", function(event) {
 		Ti.API.info("Touches started, points: " + JSON.stringify(event.points));
@@ -72,7 +69,7 @@ uses the TiMultiTouch to enable playing two or more notes simultaneously. You ca
 ## Author
 
 Copyright (C) 2011, 2012 Uri Shaked <uri@salsa4fun.co.il>.
-Portions of the code are based on the original TiMultitouch module by masuidrive.
+Some portions of the code are based on the original TiMultitouch module by masuidrive.
 
 Homepage: [Uri Shaked](https://www.urish.org/).
 Github page: [https://www.github.org/urish](https://www.github.org/urish).
