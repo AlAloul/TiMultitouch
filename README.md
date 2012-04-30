@@ -8,11 +8,11 @@ INSTALL
 
 If your Titanium SDK is installed in /Library/Application Support/Titanium:
 
-	./build.py && rm -Rf /Library/Application\ Support/Titanium/modules/iphone/org.urish.titanium.multitouch/ && unzip org.urish.titanium.multitouch-iphone-1.0.zip -d /Library/Application\ Support/Titanium/
+	./build.py && rm -Rf /Library/Application\ Support/Titanium/modules/iphone/org.urish.titanium.multitouch/ && unzip org.urish.titanium.multitouch-iphone-1.2.zip -d /Library/Application\ Support/Titanium/
 
 If your Titanium SDK is installed under your home directory:
 
-	./build.py && rm -Rf ~/Library/Application\ Support/Titanium/modules/iphone/org.urish.titanium.multitouch/ && unzip org.urish.titanium.multitouch-iphone-1.0.zip -d ~/Library/Application\ Support/Titanium/
+	./build.py && rm -Rf ~/Library/Application\ Support/Titanium/modules/iphone/org.urish.titanium.multitouch/ && unzip org.urish.titanium.multitouch-iphone-1.2.zip -d ~/Library/Application\ Support/Titanium/
 
 If you have another Titanium Mobile SDK version, please change the value of the "TITANIUM_SDK_VERSION" property in titanium.xcconfig to match your installed version.
 
@@ -26,7 +26,7 @@ Precompiled versions are available here:
 HOW TO USE IT
 -------------
 1. Add the multitouch module to your tiapp.xml: inside the `<modules>` tag add the following line:
-	`<module version="1.0">org.urish.titanium.multitouch</module>`
+	`<module version="1.2">org.urish.titanium.multitouch</module>`
 2. Add the following code in the beginning of your app.js:
 	`require("org.urish.titanium.multitouch");`
 3. To enable multitouch for a window or a view, add an empty event listener to the 'singletap' event 
@@ -45,10 +45,7 @@ CODE EXAMPLE
 
 	require("org.urish.titanium.multitouch");
 	
-	win.addEventListener('singletap', function(event) {
-		// DON'T REMOVE THIS LISTENER!!
-		// hack for multi touch module
-	});
+	win.multitouch = true;
 	
 	win.addEventListener("touchstart", function(event) {
 		Ti.API.info("Touches started, points: " + JSON.stringify(event.points));
@@ -86,7 +83,7 @@ MIT License
 
 COPYRIGHT
 --------------
-* 2011 Uri Shaked ([urish](https://github.com/urish))
+* 2011, 2012 Uri Shaked ([urish](https://github.com/urish))
 * 2011 Jose Fernandez (magec) github.com/magec (small change and tested in 1.6.2)
 * 2010 Yuchiro MASUI (masuidrive) <masui@masuidrive.jp>
 
