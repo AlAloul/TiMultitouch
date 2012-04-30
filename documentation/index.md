@@ -17,7 +17,7 @@ To load the module, add the following line to your javascript code:
 
 ## Reference
 
-You can enable multitouch for any window or view. First of all, set the 'multitouch' property to the view to true
+You can enable multitouch for any window or view. First of all, set the 'multitouch' property of the view to true
 (see example below). Then add listeners to the standard touchstart/touchmove/touchend/touchcancel events. These events
 will include a new property named "points".
 
