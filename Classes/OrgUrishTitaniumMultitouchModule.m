@@ -46,13 +46,29 @@
 
 @end
 
-@interface TiUIView (exists)
-- (void)handleSwipeRight;
-- (void)handleSwipeLeft;
-- (void)handleDoubleTap;
-- (void)handleTwoFingerTap;
+@interface  TiViewProxy
+-(UIView*)view;
+-(BOOL)viewAttached;
 @end
 
+@implementation TiViewProxy (multitouch)
+-(id)multitouch
+{
+    __block BOOL result = NO;
+    TiThreadPerformOnMainThread(^{
+        result = self.view.multipleTouchEnabled;
+    }, YES);
+    return NUMBOOL(result);
+}
+
+-(void)setMultitouch:(id)value;
+{
+    BOOL newValue = [value boolValue];
+    TiThreadPerformOnMainThread(^{
+        self.view.multipleTouchEnabled = newValue;
+    }, YES);
+}
+@end
 
 @implementation TiUIView (multitouch)
 
@@ -71,22 +87,16 @@
     [target setValue:ts forKey:@"points"];
 }
 
-- (void)touchesBegan:(NSSet *)touches withEvent:(UIEvent *)event 
+- (void)processTouchesBegan:(NSSet *)touches withEvent:(UIEvent *)event
 {
-	int count = [[event touchesForView:self] count];
-    
-	if (count == 0) {
-		//The touch events are not for this view. Propagate and return
-		[super touchesBegan:touches withEvent:event];
-		return;
-	}
-	UITouch *touch = [touches anyObject];
+    UITouch *touch = [touches anyObject];
     
 	if (handlesTouches)
 	{
 		NSMutableDictionary *evt = [NSMutableDictionary dictionaryWithDictionary:[TiUtils pointToDictionary:[touch locationInView:self]]];
 		[evt setValue:[TiUtils pointToDictionary:[touch locationInView:nil]] forKey:@"globalPoint"];
         [self addTouches:touches toEvent:evt];
+        
 		if ([proxy _hasListeners:@"touchstart"])
 		{
 			[proxy fireEvent:@"touchstart" withObject:evt propagate:YES];
@@ -108,25 +118,16 @@
 			return;
 		}
 	}
-	[super touchesBegan:touches withEvent:event];
 }
 
-- (void)touchesMoved:(NSSet *)touches withEvent:(UIEvent *)event 
+- (void)processTouchesMoved:(NSSet *)touches withEvent:(UIEvent *)event
 {
-	int count = [[event touchesForView:self] count];
-    
-	if (count == 0) {
-		//The touch events are not for this view. Propagate and return
-		[super touchesMoved:touches withEvent:event];
-		return;
-	}
-    
 	UITouch *touch = [touches anyObject];
 	if (handlesTouches)
 	{
 		NSMutableDictionary *evt = [NSMutableDictionary dictionaryWithDictionary:[TiUtils pointToDictionary:[touch locationInView:self]]];
 		[evt setValue:[TiUtils pointToDictionary:[touch locationInView:nil]] forKey:@"globalPoint"];
-        [self addTouches:event.allTouches toEvent:evt];
+        [self addTouches:touches toEvent:evt];
 		if ([proxy _hasListeners:@"touchmove"])
 		{
 			[proxy fireEvent:@"touchmove" withObject:evt propagate:YES];
@@ -137,19 +138,10 @@
 	{
 		[touchDelegate touchesMoved:touches withEvent:event];
 	}
-	[super touchesMoved:touches withEvent:event];
 }
 
-- (void)touchesEnded:(NSSet *)touches withEvent:(UIEvent *)event 
+- (void)processTouchesEnded:(NSSet *)touches withEvent:(UIEvent *)event
 {
-	int count = [[event touchesForView:self] count];
-    
-	if (count == 0) {
-		//The touch events are not for this view. Propagate and return
-		[super touchesEnded:touches withEvent:event];
-		return;
-	}
-    
 	if (handlesTouches)
 	{
 		UITouch *touch = [touches anyObject];
@@ -167,24 +159,15 @@
 	{
 		[touchDelegate touchesEnded:touches withEvent:event];
 	}
-	[super touchesEnded:touches withEvent:event];
 }
 
-- (void)touchesCancelled:(NSSet *)touches withEvent:(UIEvent *)event 
+- (void)processTouchesCancelled:(NSSet *)touches withEvent:(UIEvent *)event
 {
-	int count = [[event touchesForView:self] count];
-    
-	if (count == 0) {
-		//The touch events are not for this view. Propagate and return
-		[super touchesCancelled:touches withEvent:event];
-		return;
-	}
-    
 	if (handlesTouches)
 	{
 		UITouch *touch = [touches anyObject];
 		CGPoint point = [touch locationInView:self];
-        NSMutableDictionary *evt = [NSMutableDictionary dictionaryWithDictionary:[TiUtils pointToDictionary:point]];
+		NSMutableDictionary *evt = [NSMutableDictionary dictionaryWithDictionary:[TiUtils pointToDictionary:point]];
         [self addTouches:touches toEvent:evt];
 		if ([proxy _hasListeners:@"touchcancel"])
 		{
@@ -196,6 +179,5 @@
 	{
 		[touchDelegate touchesCancelled:touches withEvent:event];
 	}
-	[super touchesCancelled:touches withEvent:event];
 }
 @end

@@ -3,7 +3,7 @@
 # Appcelerator Titanium Module Packager
 #
 #
-import os, sys, glob, string
+import os, subprocess, sys, glob, string
 import zipfile
 from datetime import date
 
@@ -17,6 +17,10 @@ module_defaults = {
 	'copyright' : 'Copyright (c) %s by Your Company' % str(date.today().year),
 }
 module_license_default = "TODO: place your license here and we'll include it in the module distribution"
+
+def find_sdk(config):
+	sdk = config['TITANIUM_SDK']
+	return os.path.expandvars(os.path.expanduser(sdk))
 
 def replace_vars(config,token):
 	idx = token.find('$(')
@@ -48,12 +52,15 @@ def generate_doc(config):
 	if not os.path.exists(docdir):
 		print "Couldn't find documentation file at: %s" % docdir
 		return None
-	sdk = config['TITANIUM_SDK']
-	support_dir = os.path.join(sdk,'module','support')
-	sys.path.append(support_dir)
-	import markdown
+		
+	try:
+		import markdown2 as markdown
+	except ImportError:
+		import markdown
 	documentation = []
 	for file in os.listdir(docdir):
+		if file in ignoreFiles or os.path.isdir(os.path.join(docdir, file)):
+			continue
 		md = open(os.path.join(docdir,file)).read()
 		html = markdown.markdown(md)
 		documentation.append({file:html});
@@ -61,20 +68,27 @@ def generate_doc(config):
 
 def compile_js(manifest,config):
 	js_file = os.path.join(cwd,'assets','org.urish.titanium.multitouch.js')
-	if not os.path.exists(js_file): return
-	
-	sdk = config['TITANIUM_SDK']
-	iphone_dir = os.path.join(sdk,'iphone')
-	sys.path.insert(0,iphone_dir)
+	if not os.path.exists(js_file): return	
+
 	from compiler import Compiler
+	try:
+		import json
+	except:
+		import simplejson as json
 	
 	path = os.path.basename(js_file)
-	metadata = Compiler.make_function_from_file(path,js_file)
+	compiler = Compiler(cwd, manifest['moduleid'], manifest['name'], 'commonjs')
+	metadata = compiler.make_function_from_file(path,js_file)
+	
+	exports = open('metadata.json','w')
+	json.dump({'exports':compiler.exports }, exports)
+	exports.close()
+
 	method = metadata['method']
 	eq = path.replace('.','_')
-	method = '  return %s;' % method
+	method = '  return filterData(%s, @"%s");' % (method, manifest['moduleid'])
 	
-	f = os.path.join(cwd,'Classes','OrgUrishTitaniumMultitouchModuleAssets.m')
+	f = os.path.join(cwd,'Classes','OrgUrishTitaniumMultitouchModuleAssets.mm')
 	c = open(f).read()
 	idx = c.find('return ')
 	before = c[0:idx]
@@ -99,7 +113,7 @@ def warn(msg):
 
 def validate_license():
 	c = open(os.path.join(cwd,'LICENSE')).read()
-	if c.find(module_license_default)!=1:
+	if c.find(module_license_default)!=-1:
 		warn('please update the LICENSE file with your license text before distributing')
 			
 def validate_manifest():
@@ -145,6 +159,9 @@ def glob_libfiles():
 	return files
 
 def build_module(manifest,config):
+	from tools import ensure_dev_path
+	ensure_dev_path()
+	
 	rc = os.system("xcodebuild -sdk iphoneos -configuration Release")
 	if rc != 0:
 		die("xcodebuild failed")
@@ -181,6 +198,9 @@ def package_module(manifest,mf,config):
 		  zip_dir(zf,dn,'%s/%s' % (modulepath,dn),['README'])
 	zf.write('LICENSE','%s/LICENSE' % modulepath)
 	zf.write('module.xcconfig','%s/module.xcconfig' % modulepath)
+	exports_file = 'metadata.json'
+	if os.path.exists(exports_file):
+		zf.write(exports_file, '%s/%s' % (modulepath, exports_file))
 	zf.close()
 	
 
@@ -188,6 +208,11 @@ if __name__ == '__main__':
 	manifest,mf = validate_manifest()
 	validate_license()
 	config = read_ti_xcconfig()
+	
+	sdk = find_sdk(config)
+	sys.path.insert(0,os.path.join(sdk,'iphone'))
+	sys.path.append(os.path.join(sdk, "common"))
+	
 	compile_js(manifest,config)
 	build_module(manifest,config)
 	package_module(manifest,mf,config)
